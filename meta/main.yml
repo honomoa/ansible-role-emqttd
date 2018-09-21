@@ -1,0 +1,20 @@
+---
+
+dependencies: []
+
+galaxy_info:
+  role_name: emqttd
+  author: honomoa
+  description: The Massively Scalable MQTT Broker for IoT and Mobile Applications.
+  company: "Moa"
+  license: "license (CC BY-SA 3.0)"
+  min_ansible_version: 2.4
+  platforms:
+  - name: Ubuntu
+    versions:
+    - xenial
+  galaxy_tags:
+    - packaging
+    - mqtt
+    - emqtt
+    - iot

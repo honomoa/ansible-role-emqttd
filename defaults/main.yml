@@ -1,0 +1,10 @@
+---
+
+emqtt_release: 2318
+linux_release: ubuntu16_04
+emqtt_download_url: http://emqtt.io/downloads/{{ emqtt_release }}/{{ linux_release }}
+
+emqttd_user: root
+emqttd_root: /usr/share/local/emqttd
+tmp_dst: /tmp/emqtt.zip
+limit_nofile: 1024

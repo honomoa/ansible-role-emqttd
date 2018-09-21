@@ -1,0 +1,32 @@
+---
+
+- name: Download emqttd
+  get_url:
+    url: "{{ emqtt_download_url }}"
+    dest: "{{ tmp_dst }}"
+    mode: 0444
+
+- name: Create emqttd root if missing
+  become: yes
+  file: state=directory recurse=yes dest={{ emqttd_root }} owner={{ emqttd_user }} group={{ emqttd_user }} mode=0755
+
+- name: Extract artifacts
+  unarchive:
+    remote_src: yes
+    src: "{{ tmp_dst }}"
+    dest: "{{ emqttd_root }}"
+
+- name: Copy emqttd systemd config
+  template: src=emqttd.service.j2 dest=/lib/systemd/system/emqttd.service owner=root group=root mode=0640
+
+
+- name: Add symlink for systemd
+  file: src=/lib/systemd/system/emqttd.service dest=/etc/systemd/system/multi-user.target.wants/emqttd.service state=link
+
+- name: reload systemd
+  shell: systemctl daemon-reload
+
+- name: Start emqttd
+  service:
+    name: emqttd.service
+    state: started

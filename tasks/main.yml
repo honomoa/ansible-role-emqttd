@@ -1,0 +1,7 @@
+---
+
+- name: Provision
+  include: provision.yml
+  tags:
+    - provision
+    - provision-emqttd
