@@ -5,8 +5,8 @@ After=network.target
 [Service]
 Type=forking
 WorkingDirectory={{ emqttd_root }}/emqttd
-ExecStart=./bin/emqttd start
-ExecStop=./bin/emqttd stop
+ExecStart={{ emqttd_root }}/emqttd/bin/emqttd start
+ExecStop={{ emqttd_root }}/emqttd/bin/emqttd stop
 User={{ emqttd_user }}
 Restart=always
 RestartSec=10
